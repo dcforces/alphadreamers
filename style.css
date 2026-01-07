@@ -1,0 +1,408 @@
+/* Custom Properties for easy color changes */
+:root {
+    --primary-color: #6A0DAD; /* Deep Purple */
+    --secondary-color: #FF69B4; /* Hot Pink */
+    --accent-color: #F9F6EE; /* Gold/Yellow */
+    --background-start: #E0BBE4; /* Light Lavender */
+    --background-end: #957AD6; /* Medium Violet */
+    --text-color: #1a1a1a;
+    --white: #ffffff;
+}
+
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.card {
+          max-width: 640px;
+          padding: 48px;
+          border-radius: 20px;
+          background: rgba(255,255,255,0.05);
+          backdrop-filter: blur(10px);
+          box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+          color: var(--accent-color);
+        }
+
+        .badge {
+                  display: inline-block;
+                  padding: 8px 16px;
+                  border-radius: 999px;
+                  background: rgba(139,123,255,0.15);
+                  color: var(--accent);
+                  font-weight: 500;
+                  margin-bottom: 20px;
+                  font-size: 0.9rem;
+                  color: var(--accent-color);
+                }
+
+                footer {
+                  margin-top: 40px;
+                  font-size: 0.85rem;
+                  color: var(--accent-color);
+                  opacity: 0.8;
+                }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    overflow: hidden; /* Hide anything that goes off-screen due to animations */
+    
+    /* Fancy Gradient Background */
+    background: linear-gradient(135deg, var(--background-start) 0%, var(--background-end) 100%);
+    position: relative;
+    z-index: 1;
+}
+
+/* Diagonal Line Overlay (Fancy Decent Background) */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: 
+        repeating-linear-gradient(
+            45deg, 
+            rgba(255, 255, 255, 0.1), /* Semi-transparent White */
+            rgba(255, 255, 255, 0.1) 10px,
+            transparent 10px,
+            transparent 20px
+        );
+    transform: translate(-50%, -50%); /* Center the large background */
+    z-index: -1; /* Keep it behind the content */
+}
+
+/* Header Styling */
+.main-header {
+    padding: 20px;
+    z-index: 10;
+}
+
+.main-header h1 {
+    font-size: 3em;
+    color: var(--white);
+    text-shadow: 2px 2px var(--primary-color);
+    letter-spacing: 2px;
+    font-weight: 900;
+}
+
+/* Content Container */
+.content-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white box for contrast */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 600px;
+    text-align: center;
+    margin: 20px;
+    z-index: 10;
+}
+
+/* Hero Section Text */
+.tagline {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.hero-section h2 {
+    font-size: 2.5em;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.description strong {
+    color: var(--primary-color);
+}
+
+/* Signup Box */
+.signup-box {
+    background-color: var(--white);
+    padding: 20px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.signup-box p {
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.signup-box form {
+    display: flex;
+    gap: 10px;
+}
+
+.signup-box input[type="email"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid var(--background-end);
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.signup-box button {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.signup-box button:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.privacy-note {
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-top: 10px;
+    color: #666;
+}
+
+/* Social Links */
+.social-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+}
+
+/* --- ANIMATION STYLES --- */
+
+.animated-element {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Placeholder size: Replace with actual asset dimensions */
+    width: 100px; 
+    height: 100px;
+    z-index: 5; /* Behind content, above background */
+}
+
+/* 1. Car Animation */
+.car-icon {
+    /* **TODO: Replace this with your car icon/image path** */
+    background-image: url('images/car-icon.png'); 
+    bottom: 0px; /* Start off-screen below */
+    left: 0;
+    width: 150px; /* Larger size for car */
+    height: 75px;
+    animation: drive-by 30s linear infinite;
+}
+
+@keyframes drive-by {
+    0% {
+        transform: translateX(-100vw); /* Start off-screen left */
+    }
+    100% {
+        transform: translateX(100vw); /* End off-screen right */
+    }
+}
+
+/* 2. Astronaut Animation */
+.astronaut-icon {
+    /* **TODO: Replace this with your astronaut icon/image path** */
+    background-image: url('images/astronaut-icon.png');
+    top: 5%;
+    right: 5%;
+    animation: float-rotate 25s ease-in-out infinite alternate;
+}
+
+@keyframes float-rotate {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    50% {
+        transform: translate(-100px, 150px) rotate(180deg);
+    }
+    100% {
+        transform: translate(50px, -50px) rotate(360deg);
+    }
+}
+
+/* 3. Cloud/Plane Animations */
+.cloud-icon {
+    position: absolute;
+    background-image: url('images/cloud-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    width: 160px;
+    height: 90px;
+}
+
+.cloud-animated {
+    top: -140px;
+    left: 50%;
+    opacity: 0;
+    animation: cloud-group-float 26s ease-in-out infinite;
+}
+
+.cloud-left {
+    transform: translateX(-220px);
+}
+
+.cloud-center {
+    transform: translateX(-50%);
+}
+
+.cloud-right {
+    transform: translateX(60px);
+}
+
+@keyframes cloud-group-float {
+
+    /* Hidden above */
+    0% {
+        top: -140px;
+        opacity: 0;
+    }
+
+    /* Appear */
+    10% {
+        opacity: 1;
+    }
+
+    /* Fall */
+    30% {
+        top: 120px;
+    }
+
+    /* Bounce */
+    38% {
+        top: 95px;
+    }
+
+    45% {
+        top: 120px;
+    }
+
+    /* Settle */
+    55% {
+        top: 120px;
+    }
+
+    /* Swing right */
+    65% {
+        transform: translateX(var(--x-offset)) translateX(40px);
+    }
+
+    /* Swing left */
+    75% {
+        transform: translateX(var(--x-offset)) translateX(-40px);
+    }
+
+    /* Back to position */
+    85% {
+        transform: translateX(var(--x-offset));
+    }
+
+    /* Rise and fade */
+    100% {
+        top: -160px;
+        opacity: 0;
+    }
+}
+
+.plane-icon {
+    position: absolute;
+    background-image: url('images/plane-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    width: 150px;
+    height: 75px;
+
+    /* Start roughly at mid-left */
+    left: -220px;
+    top: 20%;
+    transform: translateY(-50%);
+
+    animation: fly-diagonal 30s ease-in-out infinite;
+}
+
+
+@keyframes fly-diagonal {
+
+    /* Appear from left-middle */
+    0% {
+        transform: translate(0, -50%) rotate(0deg) scale(1);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    /* Gentle upward climb */
+    35% {
+        transform: translate(40vw, -60%) rotate(-25deg) scale(1);
+    }
+
+    /* Maneuver: slight dip + tilt */
+    55% {
+        transform: translate(60vw, -120%) rotate(-35deg) scale(1);
+    }
+
+    /* Steep climb toward top-middle */
+    80% {
+        transform: translate(80vw, -180%) rotate(-45deg) scale(0.9);
+        opacity: 1;
+    }
+
+    /* Vanish near top-middle */
+    100% {
+        transform: translate(100vw, -280%) rotate(-45deg) scale(0.7);
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+    .content-container {
+        padding: 30px 15px;
+        margin: 10px;
+    }
+    .main-header h1 {
+        font-size: 2.5em;
+    }
+    .hero-section h2 {
+        font-size: 1.8em;
+    }
+    .signup-box form {
+        flex-direction: column;
+    }
+    .animated-element {
+        display: none; /* Hide animations on small screens for performance */
+    }
+}
